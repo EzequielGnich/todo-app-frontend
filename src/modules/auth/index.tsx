@@ -1,10 +1,10 @@
 import AuthTabs from "./components/auth.tabs";
 import "./styles.scss";
 
-export const Auth: React.FC = () => {
+export default function Auth() {
   return (
     <div className="auth-container">
       <AuthTabs />
     </div>
   );
-};
+}
