@@ -1,7 +1,6 @@
-import { RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from "antd";
-import { router } from "./app-routes";
 import { ReactQueryProvider } from "./config/react-query";
+import AppRoutes from "./routes";
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
           algorithm: theme.defaultAlgorithm,
         }}
       >
-        <RouterProvider router={router} />
+        <AppRoutes />
       </ConfigProvider>
     </ReactQueryProvider>
   );
