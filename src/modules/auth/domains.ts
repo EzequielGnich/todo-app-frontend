@@ -1,31 +1,23 @@
 import { useMutation } from "react-query";
 import { signIn } from "./services";
 import { LocalStorageService } from "../../assets/local-storage";
-import { notification } from "antd";
-
-const renderSuccess = () => {
-  notification.success({
-    message: "Success",
-    description: "Logged in successfully",
-  });
-};
-
-const renderError = (error: unknown) => {
-  notification.error({
-    message: "Error",
-    description: error.message,
-  });
-};
+import { renderNotificationError } from "../../shared/notifications";
+import { useNavigate } from "react-router-dom";
 
 export const useSignIn = () => {
+  const navigate = useNavigate();
+
   const { mutate: handleSignIn, ...mutation } = useMutation(signIn, {
     onSuccess: (data) => {
       if (!data) return;
       LocalStorageService.set("access_token", data.access_token);
-      renderSuccess();
+      navigate("/auth-validation");
     },
     onError: (error) => {
-      renderError(error);
+      renderNotificationError({
+        message: "Error",
+        description: error.message,
+      });
     },
   });
 

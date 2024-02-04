@@ -1,4 +1,4 @@
-import { Button, Card, Input } from "antd";
+import { Button, Input } from "antd";
 import { useSignIn } from "../domains";
 import { useState } from "react";
 
@@ -17,12 +17,8 @@ export const SignInTab: React.FC = () => {
   };
 
   return (
-    <Card
-      title="Card title"
-      bordered={false}
-      style={{ width: 450, height: 300 }}
-    >
-      <div>
+    <div className="signin-container">
+      <div className="signin-container__wrapper">
         <div>
           <span>Email</span>
           <Input onChange={handleNameChange} />
@@ -35,6 +31,6 @@ export const SignInTab: React.FC = () => {
           Sign In
         </Button>
       </div>
-    </Card>
+    </div>
   );
 };

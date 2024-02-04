@@ -1,21 +1,17 @@
 import axios from "axios";
 import { apiURL } from "../../config/constants";
 import { AuthRequest, AuthResponse } from "./models";
-import { notification } from "antd";
-
-const renderError = () => {
-  notification.error({
-    message: "Error",
-    description: "Email and password are required",
-  });
-};
+import { renderNotificationError } from "../../shared/notifications";
 
 export const signIn = async ({
   email,
   password,
 }: AuthRequest): Promise<AuthResponse | undefined> => {
   if (!email || !password) {
-    renderError();
+    renderNotificationError({
+      message: "Error",
+      description: "Email and password are required",
+    });
     return;
   }
 
