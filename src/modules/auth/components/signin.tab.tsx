@@ -17,8 +17,8 @@ export const SignInTab: React.FC = () => {
   };
 
   return (
-    <div className="signin-container">
-      <div className="signin-container__wrapper">
+    <div>
+      <div>
         <div>
           <span>Email</span>
           <Input onChange={handleNameChange} />

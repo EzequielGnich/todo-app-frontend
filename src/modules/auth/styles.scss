@@ -1,23 +1,125 @@
 .auth-container {
-  display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  position: relative;
+  display: flex;
+  height: 480px;
+  width: 350px;
 
-  & .signin-container {
-    width: 350px;
-    height: 350px;
+  &__buttons-container {
+    justify-content: space-between;
+    border-radius: 16px 16px 0 0;
+    background-color: #fffeff;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
     display: flex;
-    align-items: start;
-    justify-content: center;
-    border: 0px #e5e5e5 solid;
-    border-radius: 8px;
-
-    box-shadow: 0px 0px 26px 0px rgba(1, 255, 73, 0.3);
+    height: 100px;
+    width: 100%;
+    top: 0;
 
     &__wrapper {
-      margin-top: 50px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 100%;
+
+      &__signin-button {
+        background-color: #fffeff;
+        border: none;
+        height: 48px;
+        width: 100%;
+
+        transition: background-color 0.4s ease-in-out;
+
+        &:not(.active):hover {
+          background-color: rgb(252, 70, 107);
+          color: #fffeff;
+        }
+      }
+
+      &__signup-button {
+        background-color: #fffeff;
+        height: 48px;
+        border: none;
+        width: 100%;
+
+        transition: background-color 0.4s ease-in-out;
+
+        &:not(.active):hover {
+          background-color: rgb(252, 70, 107);
+          color: #fffeff;
+        }
+      }
     }
+  }
+
+  &__signin-wrapper {
+    border-radius: 0 0 16px 16px;
+    background-color: #fffeff;
+    position: absolute;
+    z-index: 1000;
+    padding: 16px;
+    height: 380px;
+    width: 100%;
+    bottom: 0;
+  }
+
+  &__signup-wrapper {
+    border-radius: 0 0 16px 16px;
+    background-color: #fffeff;
+    position: absolute;
+    padding: 16px;
+    height: 380px;
+    width: 100%;
+    z-index: 0;
+    bottom: 0;
+  }
+}
+
+.active {
+  border-bottom: 2px solid rgb(252, 70, 107);
+}
+
+.tab-active {
+  animation: slideIn 1s ease-in-out;
+  z-index: 1000;
+}
+
+.tab-inactive {
+  animation: slideOut 1s ease-in-out;
+  z-index: 0;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(0);
+    z-index: 0;
+  }
+
+  50% {
+    transform: translateX(-180px);
+  }
+
+  100% {
+    transform: translateX(0);
+    z-index: 1000;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    z-index: 1000;
+  }
+
+  50% {
+    transform: translateX(180px);
+  }
+
+  100% {
+    transform: translateX(0);
+    z-index: 0;
   }
 }
