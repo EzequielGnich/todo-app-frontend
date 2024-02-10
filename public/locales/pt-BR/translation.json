@@ -1,0 +1,24 @@
+{
+  "interpolation_pluralization": {
+    "text": "dsa {{ count }}"
+  },
+  "signin": {
+    "button": {
+      "label": "Entrar"
+    },
+    "input": {
+      "email": "E-mail",
+      "password": "Senha"
+    }
+  },
+  "signup": {
+    "button": {
+      "label": "Cadastrar-se"
+    },
+    "input": {
+      "email": "E-mail",
+      "name": "Nome",
+      "password": "Senha"
+    }
+  }
+}
