@@ -1,36 +1,61 @@
-import { Button, Input } from "antd";
+import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 import { useSignIn } from "../domains";
-import { useState } from "react";
+
+import Typography from "../../../shared/typography";
+import { ColorVariants } from "../../../shared/typography/models";
+import "./signin.styles.scss";
 
 export const SignInTab: React.FC = () => {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const { t } = useTranslation();
 
   const { handleSignIn } = useSignIn();
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      handleSignIn(values);
+    },
+  });
 
   return (
-    <div>
-      <div>
-        <div>
-          <span>Email</span>
-          <Input onChange={handleNameChange} />
-        </div>
-        <div>
-          <span>Password</span>
-          <Input.Password onChange={handlePasswordChange} />
-        </div>
-        <Button onClick={() => handleSignIn({ email, password })}>
-          Sign In
-        </Button>
+    <form onSubmit={formik.handleSubmit} className="signin-container">
+      <div className="signin-container__wrapper">
+        <label className="custom-field">
+          <input
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            type="email"
+            name="email"
+            id="email"
+            required
+          />
+          <span className="placeholder">{t("signin.input.email")}</span>
+        </label>
       </div>
-    </div>
+
+      <div className="signin-container__wrapper">
+        <label className="custom-field">
+          <input
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            name="password"
+            type="password"
+            id="password"
+            required
+          />
+          <span className="placeholder">{t("signin.input.password")}</span>
+        </label>
+      </div>
+
+      <button className="signin-container__button-submit" type="submit">
+        <Typography tag="span" color={ColorVariants.PRIMARY}>
+          {t("signin.input.button")}
+        </Typography>
+      </button>
+    </form>
   );
 };

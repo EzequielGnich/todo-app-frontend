@@ -4,8 +4,10 @@
   align-items: center;
   position: relative;
   display: flex;
-  height: 480px;
+  height: 530px;
   width: 350px;
+
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 
   &__buttons-container {
     justify-content: space-between;
@@ -15,7 +17,7 @@
     align-items: center;
     position: absolute;
     display: flex;
-    height: 100px;
+    height: 150px;
     width: 100%;
     top: 0;
 
@@ -53,14 +55,32 @@
         }
       }
     }
+
+    &__card-title {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      height: 100%;
+      width: 100%;
+
+      & > h4 {
+        font-weight: 500;
+        margin-right: 8px;
+      }
+
+      & > h2 {
+        font-weight: 800;
+        margin-right: 8px;
+      }
+    }
   }
 
   &__signin-wrapper {
     border-radius: 0 0 16px 16px;
     background-color: #fffeff;
     position: absolute;
+    padding: 36px 16px;
     z-index: 1000;
-    padding: 16px;
     height: 380px;
     width: 100%;
     bottom: 0;
@@ -92,6 +112,28 @@
   z-index: 0;
 }
 
+.container-buttons-expanding {
+  animation: animatedContainerButtonsWidth 1s ease-in-out;
+}
+
+.container-background-expanding {
+  animation: animatedContainerButtonsWidth 1s ease-in-out;
+}
+
+@keyframes animatedContainerButtonsWidth {
+  0% {
+    width: 350px;
+  }
+
+  50% {
+    width: 700px;
+  }
+
+  100% {
+    width: 350px;
+  }
+}
+
 @keyframes slideIn {
   0% {
     transform: translateX(0);
@@ -99,7 +141,7 @@
   }
 
   50% {
-    transform: translateX(-180px);
+    transform: translateX(-175px);
   }
 
   100% {
@@ -115,11 +157,62 @@
   }
 
   50% {
-    transform: translateX(180px);
+    transform: translateX(175px);
   }
 
   100% {
     transform: translateX(0);
     z-index: 0;
+  }
+}
+
+.background-animated {
+  height: 550px;
+  width: 370px;
+  background: linear-gradient(
+    -45deg,
+    rgba(252, 70, 107, 1) 0%,
+    rgb(238, 31, 218) 25%,
+    rgba(63, 94, 251, 1) 50%,
+    rgb(238, 31, 218) 75%,
+    rgb(63, 163, 251) 100%
+  );
+
+  background-size: 400% 400%;
+  position: relative;
+  animation: animate 4s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.background-animated-expanding {
+  animation: animatedBackgroundCardWidth 1s ease-in-out;
+}
+
+@keyframes animatedBackgroundCardWidth {
+  0% {
+    width: 370px;
+  }
+
+  50% {
+    width: 725px;
+  }
+
+  100% {
+    width: 370px;
   }
 }

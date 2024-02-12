@@ -13,7 +13,7 @@ export const useSignIn = () => {
       LocalStorageService.set("access_token", data.access_token);
       navigate("/auth-validation");
     },
-    onError: (error) => {
+    onError: (error: Error) => {
       renderNotificationError({
         message: "Error",
         description: error.message,

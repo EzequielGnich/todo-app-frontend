@@ -48,11 +48,59 @@ const tabs = () => {
   };
 };
 
+export const container = () => {
+  const containerButtons = document.querySelector(
+    ".auth-container__buttons-container"
+  );
+
+  const animationEnded = () => {
+    containerButtons?.addEventListener("animationend", () => {
+      containerButtons?.classList.remove("container-buttons-expanding");
+    });
+  };
+
+  const expanded = () => {
+    containerButtons?.classList.add("container-buttons-expanding");
+
+    animationEnded();
+  };
+
+  return {
+    expanded,
+    containerInstance: containerButtons,
+  };
+};
+
+export const backgroundCard = () => {
+  const background = document.querySelector(".background-animated");
+
+  const animationEnded = () => {
+    background?.addEventListener("animationend", () => {
+      background?.classList.remove("background-animated-expanding");
+    });
+  };
+
+  const expanded = () => {
+    background?.classList.add("background-animated-expanding");
+
+    animationEnded();
+  };
+
+  return {
+    expanded,
+    containerInstance: background,
+  };
+};
+
 export const setActiveTabAndButton = (tab: string) => {
   if (tab === "signin") {
+    backgroundCard().expanded();
+    container().expanded();
     buttons().signin();
     tabs().signin();
   } else {
+    backgroundCard().expanded();
+    container().expanded();
     buttons().signup();
     tabs().signup();
   }

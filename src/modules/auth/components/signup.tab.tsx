@@ -1,55 +1,72 @@
-import { Card, Input, Button, Form } from "antd";
-import { FieldType } from "../models";
+import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
+import Typography from "../../../shared/typography";
+import { ColorVariants } from "../../../shared/typography/models";
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log("Failed:", errorInfo);
-};
+import "./signup.styles.scss";
 
 export const SignUpTab: React.FC = () => {
+  const { t } = useTranslation();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      name: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
-    <Form
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item<FieldType>
-        label="Name"
-        name="name"
-        rules={[{ required: true, message: "Please input your name!" }]}
-      >
-        <Input />
-      </Form.Item>
+    <form onSubmit={formik.handleSubmit} className="signup-container">
+      <div className="signup-container__wrapper">
+        <label className="custom-field">
+          <input
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            type="email"
+            name="email"
+            id="email"
+            required
+          />
+          <span className="placeholder">{t("signup.input.email")}</span>
+        </label>
+      </div>
 
-      <Form.Item<FieldType>
-        label="Email"
-        name="email"
-        rules={[{ required: true, message: "Please input your email!" }]}
-      >
-        <Input />
-      </Form.Item>
+      <div className="signup-container__wrapper">
+        <label className="custom-field">
+          <input
+            onChange={formik.handleChange}
+            value={formik.values.name}
+            name="name"
+            type="name"
+            id="name"
+            required
+          />
+          <span className="placeholder">{t("signup.input.name")}</span>
+        </label>
+      </div>
 
-      <Form.Item<FieldType>
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+      <div className="signup-container__wrapper">
+        <label className="custom-field">
+          <input
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            name="password"
+            type="password"
+            id="password"
+            required
+          />
+          <span className="placeholder">{t("signup.input.password")}</span>
+        </label>
+      </div>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+      <button className="signup-container__button-submit" type="submit">
+        <Typography tag="span" color={ColorVariants.PRIMARY}>
+          {t("signup.input.button")}
+        </Typography>
+      </button>
+    </form>
   );
 };
