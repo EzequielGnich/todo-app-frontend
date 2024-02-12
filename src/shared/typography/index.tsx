@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 
-import * as S from "./styled";
 import { ColorVariants, TypographyProps } from "./models";
+import * as S from "./styled";
 
 const setColors = (color: ColorVariants) => {
   switch (color) {
@@ -11,6 +11,8 @@ const setColors = (color: ColorVariants) => {
       return "rgba(63, 94, 251, 1)";
     case ColorVariants.TERTIARY:
       return "rgb(63, 163, 251)";
+    case ColorVariants.WHITE:
+      return "rgb(255, 255, 255)";
     default:
       return "rgba(252, 70, 107, 1)";
   }
