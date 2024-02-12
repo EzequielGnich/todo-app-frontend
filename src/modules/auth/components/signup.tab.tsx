@@ -3,10 +3,12 @@ import { useTranslation } from "react-i18next";
 import Typography from "../../../shared/typography";
 import { ColorVariants } from "../../../shared/typography/models";
 
+import { useSignUp } from "../domains";
 import "./signup.styles.scss";
 
 export const SignUpTab: React.FC = () => {
   const { t } = useTranslation();
+  const { handleSignUp } = useSignUp();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -14,7 +16,11 @@ export const SignUpTab: React.FC = () => {
       password: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      handleSignUp({
+        email: values.email,
+        name: values.name,
+        password: values.password,
+      });
     },
   });
 

@@ -1,8 +1,8 @@
 import { useMutation } from "react-query";
-import { signIn } from "./services";
+import { useNavigate } from "react-router-dom";
 import { LocalStorageService } from "../../assets/local-storage";
 import { renderNotificationError } from "../../shared/notifications";
-import { useNavigate } from "react-router-dom";
+import { signIn, signUp } from "./services";
 
 export const useSignIn = () => {
   const navigate = useNavigate();
@@ -22,4 +22,23 @@ export const useSignIn = () => {
   });
 
   return { ...mutation, handleSignIn };
+};
+
+export const useSignUp = () => {
+  const { handleSignIn } = useSignIn();
+
+  const { mutate: handleSignUp, ...mutation } = useMutation(signUp, {
+    onSuccess: (data, variables) => {
+      if (!data) return;
+      handleSignIn({ email: data.email, password: variables.password });
+    },
+    onError: (error: Error) => {
+      renderNotificationError({
+        message: "Error",
+        description: error.message,
+      });
+    },
+  });
+
+  return { ...mutation, handleSignUp };
 };

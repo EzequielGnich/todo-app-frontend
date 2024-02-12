@@ -14,3 +14,18 @@ export type AuthRequest = {
 };
 
 export const SignInKey = "SignIn";
+
+export interface SignUpRequest {
+  password: string;
+  email: string;
+  name: string;
+}
+
+export interface SignUpResponse {
+  id: string;
+  email: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
