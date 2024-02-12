@@ -1,14 +1,12 @@
 {
-  "interpolation_pluralization": {
-    "text": "dsa {{ count }}"
-  },
   "signin": {
     "button": {
       "label": "Sign in"
     },
     "input": {
       "email": "E-mail",
-      "password": "Password"
+      "password": "Password",
+      "button": "Sign in"
     }
   },
   "signup": {
@@ -18,7 +16,8 @@
     "input": {
       "email": "E-mail",
       "name": "Name",
-      "password": "Password"
+      "password": "Password",
+      "button": "Sign up"
     }
   }
 }
