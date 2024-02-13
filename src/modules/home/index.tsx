@@ -9,6 +9,7 @@ export default function Home() {
     LocalStorageService.remove("access_token");
     navigate("/login");
   };
+
   return (
     <div
       style={{

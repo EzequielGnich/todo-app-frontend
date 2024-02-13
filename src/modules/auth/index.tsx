@@ -1,15 +1,27 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Typography from "../../shared/typography";
 import { SignInTab } from "./components/signin.tab";
 import { SignUpTab } from "./components/signup.tab";
 import { buttons, setActiveTabAndButton } from "./functions";
+import { useCheckAuth } from "./hooks";
 
 import "./styles.scss";
 
 export default function Auth() {
+  const hasAccess = useCheckAuth();
+  const navigate = useNavigate();
+
   useEffect(() => {
     buttons().signin();
   }, []);
+
+  useEffect(() => {
+    if (hasAccess) {
+      navigate("/home");
+      return;
+    }
+  }, [hasAccess, navigate]);
 
   return (
     <div className="container-centralized">
