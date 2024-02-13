@@ -1,5 +1,4 @@
-import axios from "axios";
-import { apiURL } from "../../config/constants";
+import { api } from "../../config/api";
 import { renderNotificationError } from "../../shared/notifications";
 import {
   AuthRequest,
@@ -20,7 +19,7 @@ export const signIn = async ({
     return;
   }
 
-  const response = await axios.post<AuthResponse>(`${apiURL}/login`, {
+  const response = await api.post<AuthResponse>(`/login`, {
     email,
     password,
   });
@@ -41,7 +40,7 @@ export const signUp = async ({
     return;
   }
 
-  const response = await axios.post<SignUpResponse>(`${apiURL}/users`, {
+  const response = await api.post<SignUpResponse>(`/users`, {
     password,
     email,
     name,

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useCheckAuth } from "../modules/auth/hooks";
 import PrivateRoute from "./private-routes";
 import PublicRoute from "./public-routes";
-import { useCheckAuth } from "../modules/auth/hooks";
 
 export default function AppRoutes() {
   const checkAuth = useCheckAuth();

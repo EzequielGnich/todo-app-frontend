@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { LocalStorageService } from "../../assets/local-storage";
+import { LocalStorageService } from "../../shared/local-storage";
 import { renderNotificationError } from "../../shared/notifications";
 import { signIn, signUp } from "./services";
 

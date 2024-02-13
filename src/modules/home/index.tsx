@@ -1,6 +1,6 @@
 import { Button } from "antd";
-import { LocalStorageService } from "../../assets/local-storage";
 import { useNavigate } from "react-router-dom";
+import { LocalStorageService } from "../../shared/local-storage";
 
 export default function Home() {
   const navigate = useNavigate();
