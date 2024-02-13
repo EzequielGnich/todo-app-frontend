@@ -1,3 +1,5 @@
+@import "../../../shared/global-styles/variables.scss";
+
 .signin-container {
   flex-direction: column;
   display: flex;
@@ -33,6 +35,28 @@
 
       & > span {
         color: white !important;
+      }
+    }
+  }
+
+  &__spin {
+    & > span {
+      i {
+        &:nth-child(1) {
+          background-color: $primary-color !important;
+        }
+
+        &:nth-child(2) {
+          background-color: $primary-color !important;
+        }
+
+        &:nth-child(3) {
+          background-color: $primary-color !important;
+        }
+
+        &:nth-child(4) {
+          background-color: $primary-color !important;
+        }
       }
     }
   }
