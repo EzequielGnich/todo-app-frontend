@@ -1,10 +1,8 @@
 import { isAfter } from "date-fns";
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import { LocalStorageService } from "../../shared/local-storage";
 
-export const useCheckAuth = () => {
-  const accessToken = LocalStorageService.get("access_token");
+export const useCheckAuth = (accessToken: string | null) => {
   const [hasAccess, setHasAccess] = useState(false);
 
   const [exp, setExp] = useState<number>();

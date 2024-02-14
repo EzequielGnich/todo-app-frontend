@@ -1,15 +1,20 @@
 import axios from "axios";
 import { API_URL } from "../constants";
 
+const token = localStorage.getItem("access_token");
+
 const api = axios.create({
   baseURL: API_URL,
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 });
 
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("access_token");
 
-    if (token) {
+    if (token && !config?.headers?.Authorization) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 

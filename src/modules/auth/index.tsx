@@ -6,10 +6,11 @@ import { SignUpTab } from "./components/signup.tab";
 import { buttons, setActiveTabAndButton } from "./functions";
 import { useCheckAuth } from "./hooks";
 
+import { LocalStorageService } from "../../shared/local-storage";
 import "./styles.scss";
 
 export default function Auth() {
-  const hasAccess = useCheckAuth();
+  const hasAccess = useCheckAuth(LocalStorageService.get("access_token"));
   const navigate = useNavigate();
 
   useEffect(() => {
