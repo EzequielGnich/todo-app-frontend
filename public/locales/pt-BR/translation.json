@@ -1,4 +1,10 @@
 {
+  "home": {
+    "menu": {
+      "todos": "A fazer",
+      "logout": "Sair"
+    }
+  },
   "signin": {
     "button": {
       "label": "Entrar"

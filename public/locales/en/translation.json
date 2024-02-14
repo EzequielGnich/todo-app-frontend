@@ -1,4 +1,10 @@
 {
+  "home": {
+    "menu": {
+      "todos": "Todos",
+      "logout": "Sign out"
+    }
+  },
   "signin": {
     "button": {
       "label": "Sign in"

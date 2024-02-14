@@ -9,16 +9,6 @@
   font-family: "Inter", sans-serif;
 }
 
-body {
-  background: rgb(63, 94, 251);
-  background: radial-gradient(
-    circle,
-    rgba(252, 70, 107, 1) 0%,
-    rgba(63, 94, 251, 1) 50%,
-    rgb(63, 163, 251) 100%
-  );
-}
-
 .container-centralized {
   justify-content: center;
   align-items: center;
