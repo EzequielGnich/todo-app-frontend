@@ -15,6 +15,8 @@ export enum ColorVariants {
   SECONDARY = "SECONDARY",
   TERTIARY = "TERTIARY",
   WHITE = "WHITE",
+  BLACK_07 = "BLACK_07",
+  BLACK_05 = "BLACK_05",
 }
 
 export type TypographyProps = {

@@ -13,6 +13,10 @@ const setColors = (color: ColorVariants) => {
       return "rgb(63, 163, 251)";
     case ColorVariants.WHITE:
       return "rgb(255, 255, 255)";
+    case ColorVariants.BLACK_07:
+      return "rgba(0, 0, 0, 0.7)";
+    case ColorVariants.BLACK_05:
+      return "rgba(0, 0, 0, 0.5)";
     default:
       return "rgba(252, 70, 107, 1)";
   }
