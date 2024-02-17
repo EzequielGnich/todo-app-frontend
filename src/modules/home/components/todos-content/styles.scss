@@ -1,0 +1,54 @@
+.todo-section-container {
+  background-color: #f4f5f7;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 16px;
+  border-radius: 8px;
+  display: flex;
+  padding: 16px;
+
+  & > h2 {
+    margin-bottom: 16px;
+  }
+
+  &__cards-wrapper {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+
+    &__card {
+      margin-bottom: 16px;
+      width: 190px;
+
+      & > div {
+        & > h3 {
+          margin-bottom: 16px;
+          flex-wrap: nowrap;
+          display: flex;
+        }
+      }
+
+      &__buttons_container {
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 16px;
+        display: flex;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.fetch-container {
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: row;
+  display: flex;
+  width: 40vw;
+
+  & div:last-child {
+    margin-right: 0;
+  }
+}

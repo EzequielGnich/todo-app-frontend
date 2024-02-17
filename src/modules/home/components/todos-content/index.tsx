@@ -1,30 +1,52 @@
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Spin } from "antd";
-import Meta from "antd/es/card/Meta";
+import Typography from "../../../../shared/typography";
+import { ColorVariants } from "../../../../shared/typography/models";
 import { useGetAllTodos } from "./hooks";
 import { Todo, TodoStatus } from "./models";
+import "./styles.scss";
 
 const TodoSection: React.FC<{ status: string; todos: Todo[] }> = ({
   status,
   todos,
 }) => {
   return (
-    <div key={status}>
-      <h2>{status}</h2>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div className="todo-section-container" key={status}>
+      <Typography tag="h2" color={ColorVariants.BLACK_07}>
+        {status}
+      </Typography>
+      <div className="todo-section-container__cards-wrapper">
         {todos.map((todo) => (
           <Card
-            hoverable
-            style={{ width: 160, marginBottom: 16 }}
+            className="todo-section-container__cards-wrapper__card"
             key={todo.id}
+            hoverable
           >
-            <span>{todo.status}</span>
+            <Typography
+              color={ColorVariants.BLACK_07}
+              textTransform="uppercase"
+              fontWeight={600}
+              lineHeight={1.2}
+              fontSize={14}
+              tag="h3"
+            >
+              {todo.title}
+            </Typography>
 
-            <Meta title={todo.title} description={todo.content} />
+            <Typography
+              color={ColorVariants.BLACK_05}
+              fontWeight={500}
+              lineHeight={1.2}
+              fontSize={12}
+              tag="p"
+            >
+              {todo.content}
+            </Typography>
 
-            <div style={{ marginTop: 10 }}>
-              <Button type="primary">Edit</Button>
-              <Button type="primary" danger>
-                Delete
+            <div className="todo-section-container__cards-wrapper__card__buttons_container">
+              <Button>{<EditOutlined />}</Button>
+              <Button danger>
+                <DeleteOutlined />
               </Button>
             </div>
           </Card>
@@ -44,7 +66,7 @@ const Fetch = <T,>({ children }: FetchProps<T>) => {
 
   if (status === "error") return <div>Error: {error?.message}</div>;
 
-  return <>{children(data)}</>;
+  return <div className="fetch-container">{children(data)}</div>;
 };
 
 export default function TodosContent() {
@@ -54,7 +76,7 @@ export default function TodosContent() {
         {(data) =>
           data &&
           Object.entries(data).map(([status, todos]) => (
-            <TodoSection status={status} todos={todos} />
+            <TodoSection key={status} status={status} todos={todos} />
           ))
         }
       </Fetch>
