@@ -1,9 +1,7 @@
 @import "../../shared/global-styles/_variables.scss";
 
 .home-container {
-  background-color: $secondary-color;
-  height: 100vh;
-  width: 100vw;
+  background-color: $white;
 
   &__header {
     background-color: $primary-color;

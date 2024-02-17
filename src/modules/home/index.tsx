@@ -3,7 +3,6 @@ import { Layout } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
 import { LocalStorageService } from "../../shared/local-storage";
 import TodosContent from "./components/todos-content";
 import "./styles.scss";
@@ -18,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <Layout>
+    <Layout className="home-container">
       <Header className="home-container__header">
         <div className="home-container__header__wrapper">
           <div className="home-container__header__wrapper__left">
