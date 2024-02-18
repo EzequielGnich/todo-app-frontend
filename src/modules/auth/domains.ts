@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { LocalStorageService } from "../../shared/local-storage";
 import { renderNotificationError } from "../../shared/notifications";
@@ -7,7 +7,8 @@ import { signIn, signUp } from "./services";
 export const useSignIn = () => {
   const navigate = useNavigate();
 
-  const { mutate: handleSignIn, ...mutation } = useMutation(signIn, {
+  const { mutate: handleSignIn, ...mutation } = useMutation({
+    mutationFn: signIn,
     onSuccess: (data) => {
       if (!data) return;
       LocalStorageService.set("access_token", data.access_token);
@@ -27,7 +28,8 @@ export const useSignIn = () => {
 export const useSignUp = () => {
   const { handleSignIn } = useSignIn();
 
-  const { mutate: handleSignUp, ...mutation } = useMutation(signUp, {
+  const { mutate: handleSignUp, ...mutations } = useMutation({
+    mutationFn: signUp,
     onSuccess: (data, variables) => {
       if (!data) return;
       handleSignIn({ email: data.email, password: variables.password });
@@ -40,5 +42,5 @@ export const useSignUp = () => {
     },
   });
 
-  return { ...mutation, handleSignUp };
+  return { handleSignUp, ...mutations };
 };

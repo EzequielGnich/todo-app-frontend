@@ -9,6 +9,7 @@ import "./signup.styles.scss";
 export const SignUpTab: React.FC = () => {
   const { t } = useTranslation();
   const { handleSignUp } = useSignUp();
+
   const formik = useFormik({
     initialValues: {
       email: "",
