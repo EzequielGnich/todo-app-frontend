@@ -25,5 +25,22 @@
       "password": "Password",
       "button": "Sign up"
     }
+  },
+  "todos": {
+    "buttons": {
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "modal": {
+      "title": "Edit todo",
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save"
+      },
+      "placeholder": {
+        "title": "Title",
+        "content": "Content"
+      }
+    }
   }
 }

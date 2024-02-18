@@ -1,7 +1,7 @@
 {
   "home": {
     "menu": {
-      "todos": "A fazer",
+      "todos": "Tarefas",
       "logout": "Sair"
     }
   },
@@ -24,6 +24,23 @@
       "name": "Nome",
       "password": "Senha",
       "button": "Cadastrar"
+    }
+  },
+  "todos": {
+    "buttons": {
+      "edit": "Editar",
+      "delete": "Apagar"
+    },
+    "modal": {
+      "title": "Editar tarefa",
+      "buttons": {
+        "cancel": "Cancelar",
+        "save": "Salvar"
+      },
+      "placeholder": {
+        "title": "Título",
+        "content": "Conteúdo"
+      }
     }
   }
 }
