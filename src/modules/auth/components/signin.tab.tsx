@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSignIn } from "../domains";
 
 import { Spin } from "antd";
+import { CustomInput } from "../../../shared/custom-input";
 import Typography from "../../../shared/typography";
 import { ColorVariants } from "../../../shared/typography/models";
 import "./signin.styles.scss";
@@ -24,33 +25,24 @@ export const SignInTab: React.FC = () => {
 
   return (
     <form onSubmit={formik.handleSubmit} className="signin-container">
-      <div className="signin-container__wrapper">
-        <label className="custom-field">
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            type="email"
-            name="email"
-            id="email"
-            required
-          />
-          <span className="placeholder">{t("signin.input.email")}</span>
-        </label>
-      </div>
-
-      <div className="signin-container__wrapper">
-        <label className="custom-field">
-          <input
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            name="password"
-            type="password"
-            id="password"
-            required
-          />
-          <span className="placeholder">{t("signin.input.password")}</span>
-        </label>
-      </div>
+      <CustomInput
+        placeholder={t("signin.input.email")}
+        onChange={formik.handleChange}
+        value={formik.values.email}
+        type="email"
+        name="email"
+        id="email"
+        required
+      />
+      <CustomInput
+        placeholder={t("signin.input.password")}
+        onChange={formik.handleChange}
+        value={formik.values.password}
+        type="password"
+        name="password"
+        id="password"
+        required
+      />
 
       <button
         className="signin-container__button-submit"
