@@ -1,7 +1,9 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Spin } from "antd";
+import { useState } from "react";
 import Typography from "../../../../shared/typography";
 import { ColorVariants } from "../../../../shared/typography/models";
+import { TodoEditModal } from "../todo-edit-modal";
 import { useGetAllTodos } from "./hooks";
 import { Todo, TodoStatus } from "./models";
 import "./styles.scss";
@@ -10,6 +12,8 @@ const TodoSection: React.FC<{ status: string; todos: Todo[] }> = ({
   status,
   todos,
 }) => {
+  const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+
   return (
     <div className="todo-section-container" key={status}>
       <Typography tag="h2" color={ColorVariants.BLACK_07}>
@@ -44,7 +48,9 @@ const TodoSection: React.FC<{ status: string; todos: Todo[] }> = ({
             </Typography>
 
             <div className="todo-section-container__cards-wrapper__card__buttons_container">
-              <Button>{<EditOutlined />}</Button>
+              <Button onClick={() => setSelectedTodo(todo)}>
+                {<EditOutlined />}
+              </Button>
               <Button danger>
                 <DeleteOutlined />
               </Button>
@@ -52,6 +58,10 @@ const TodoSection: React.FC<{ status: string; todos: Todo[] }> = ({
           </Card>
         ))}
       </div>
+      <TodoEditModal
+        selectedTodo={selectedTodo}
+        setSelectedTodo={setSelectedTodo}
+      />
     </div>
   );
 };

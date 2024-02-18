@@ -1,33 +1,49 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { isNull, isUndefined } from "lodash";
 import { TEN_MINUTES } from "../../../../config/constants";
-import { GET_ALL_TODOS, Todo, TodoStatus } from "./models";
-import { getAllTodos } from "./services";
-
-const splitTodosByStatus = (todos: Todo[]) => {
-  return todos.reduce(
-    (acc, todo) => {
-      acc[todo.status].push(todo);
-
-      return acc;
-    },
-    {
-      [TodoStatus.ACTIVE]: [],
-      [TodoStatus.COMPLETED]: [],
-      [TodoStatus.DELETED]: [],
-    } as Record<TodoStatus, Todo[]>
-  );
-};
+import { queryClient } from "../../../../config/react-query/constants";
+import { splitTodosByStatus } from "./functions";
+import { GET_ALL_TODOS, Todo } from "./models";
+import { getAllTodos, updateTodo } from "./services";
 
 export const useGetAllTodos = () => {
-  return useQuery(
-    GET_ALL_TODOS,
-    async () => {
-      const todos = await getAllTodos();
+  const { data: todos, ...args } = useQuery({
+    queryKey: [GET_ALL_TODOS],
+    queryFn: getAllTodos,
+    staleTime: TEN_MINUTES,
+  });
 
-      return splitTodosByStatus(todos);
+  return {
+    data: splitTodosByStatus(todos),
+    ...args,
+  };
+};
+
+export const useGetEditTodo = () => {
+  const { mutate: handleEditTodo, ...mutations } = useMutation({
+    mutationFn: updateTodo,
+    onSuccess: (data, variables) => {
+      queryClient.setQueryData<Todo[] | undefined>(
+        [GET_ALL_TODOS],
+        (cachedData) => {
+          const todoIndex = cachedData?.findIndex(
+            (todo) => todo.id === variables.todoId
+          );
+
+          if (isUndefined(todoIndex) || isNull(todoIndex) || todoIndex === -1) {
+            return cachedData;
+          }
+
+          cachedData?.splice(todoIndex, 1, data);
+
+          return cachedData;
+        }
+      );
     },
-    {
-      staleTime: TEN_MINUTES,
-    }
-  );
+  });
+
+  return {
+    handleEditTodo,
+    ...mutations,
+  };
 };
