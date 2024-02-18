@@ -1,0 +1,102 @@
+@import "../global-styles/variables.scss";
+
+.input-container {
+  flex-direction: column;
+  margin-top: 24px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  & > :nth-child(2) {
+    margin-top: 16px;
+  }
+
+  &__wrapper {
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
+  &__button-submit {
+    transition: background-color 0.4s ease-in-out;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fffeff;
+    border-radius: 4px;
+    margin-top: 16px;
+    border: none;
+    height: 48px;
+    width: 100%;
+
+    &:hover {
+      background-color: rgb(252, 70, 107);
+
+      & > span {
+        color: white !important;
+      }
+    }
+  }
+
+  &__spin {
+    & > span {
+      i {
+        &:nth-child(1) {
+          background-color: $primary-color !important;
+        }
+
+        &:nth-child(2) {
+          background-color: $primary-color !important;
+        }
+
+        &:nth-child(3) {
+          background-color: $primary-color !important;
+        }
+
+        &:nth-child(4) {
+          background-color: $primary-color !important;
+        }
+      }
+    }
+  }
+}
+
+.custom-field {
+  position: relative;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.custom-field input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #f2f2f2;
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+}
+
+.custom-field .placeholder {
+  position: absolute;
+  left: 16px;
+  top: calc(50%);
+  transform: translateY(-50%);
+  color: #aaa;
+  transition: top 0.3s ease-in-out, font-size 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+.custom-field input:valid + .placeholder,
+.custom-field input:placeholder-shown + .placeholder,
+.custom-field input:active + .placeholder,
+.custom-field input:focus + .placeholder {
+  top: -12px;
+  font-size: 10px;
+  color: #aaa;
+}
