@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { isNull, isUndefined } from "lodash";
-import { TEN_MINUTES } from "../../../../config/constants";
-import { queryClient } from "../../../../config/react-query/constants";
+import { TEN_MINUTES } from "../../config/constants";
+import { queryClient } from "../../config/react-query/constants";
 import { splitTodosByStatus } from "./functions";
 import { GET_ALL_TODOS, Todo } from "./models";
 import { getAllTodos, updateTodo } from "./services";

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Todo } from "../todos-content/models";
+import { Todo } from "../models";
 
 export interface TodoEditModalProps {
   selectedTodo: Todo | null;

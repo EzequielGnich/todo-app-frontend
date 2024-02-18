@@ -4,7 +4,7 @@ import { Header } from "antd/es/layout/layout";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { LocalStorageService } from "../../shared/local-storage";
-import TodosContent from "./components/todos-content";
+import TodosContent from "../todos";
 import "./styles.scss";
 
 export default function Home() {

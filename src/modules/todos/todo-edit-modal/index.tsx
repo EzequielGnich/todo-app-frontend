@@ -1,11 +1,11 @@
 import { Button, Modal } from "antd";
 import { Formik } from "formik";
 import { useTranslation } from "react-i18next";
-import { CustomInput } from "../../../../shared/custom-input";
-import Typography from "../../../../shared/typography";
-import { ColorVariants } from "../../../../shared/typography/models";
-import { useGetEditTodo } from "../todos-content/hooks";
-import { TodoDTO, TodoStatus } from "../todos-content/models";
+import { CustomInput } from "../../../shared/custom-input";
+import Typography from "../../../shared/typography";
+import { ColorVariants } from "../../../shared/typography/models";
+import { useGetEditTodo } from "../hooks";
+import { TodoDTO, TodoStatus } from "../models";
 import { TodoEditModalProps } from "./models";
 
 const props = {

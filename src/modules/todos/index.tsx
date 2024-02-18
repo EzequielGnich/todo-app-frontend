@@ -1,12 +1,12 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Card, Spin } from "antd";
 import { useState } from "react";
-import Typography from "../../../../shared/typography";
-import { ColorVariants } from "../../../../shared/typography/models";
-import { TodoEditModal } from "../todo-edit-modal";
+import Typography from "../../shared/typography";
+import { ColorVariants } from "../../shared/typography/models";
 import { useGetAllTodos } from "./hooks";
 import { Todo, TodoStatus } from "./models";
 import "./styles.scss";
+import { TodoEditModal } from "./todo-edit-modal";
 
 const TodoSection: React.FC<{ status: string; todos: Todo[] }> = ({
   status,
